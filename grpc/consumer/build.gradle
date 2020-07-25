@@ -17,7 +17,7 @@ repositories {
 }
 
 ext {
-    set('springCloudVersion', "Greenwich.SR5")
+    set('springCloudVersion', "Greenwich.RELEASE")
 }
 
 dependencies {
@@ -27,7 +27,7 @@ dependencies {
     compile('io.micrometer:micrometer-core:1.5.1')
     compile('io.micrometer:micrometer-registry-prometheus:1.5.1')
 
-    compile('io.mobike.boot:mofa-boot-starter-grpc:1.0.0.RC3')
+    compile('io.mobike.boot:mofa-boot-starter-grpc:1.0.0-SNAPSHOT')
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'

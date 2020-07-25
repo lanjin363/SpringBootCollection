@@ -17,16 +17,22 @@ repositories {
 }
 
 ext {
-    set('springCloudVersion', "Greenwich.SR5")
+    set('springCloudVersion', "Greenwich.RELEASE")
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.cloud:spring-cloud-starter-consul-discovery'
-    compile 'io.mobike.boot:mofa-boot-starter-grpc:1.0.0.RC3'
+    compile 'io.mobike.boot:mofa-boot-starter-grpc:1.0.0-SNAPSHOT'
+    implementation ('org.springframework.boot:spring-boot-starter-actuator')
+    compile('io.opentracing.contrib:opentracing-spring-jaeger-web-starter:3.1.1')
 
-    compile('io.micrometer:micrometer-core:1.5.1')
-    compile('io.micrometer:micrometer-registry-prometheus:1.5.1')
+//            {
+//        exclude group: 'io.micrometer', module: 'micrometer-core'
+//    }
+
+//    compile('io.micrometer:micrometer-core:1.5.1')
+//    compile('io.micrometer:micrometer-registry-prometheus:1.5.1')
 
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
