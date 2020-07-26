@@ -7,7 +7,7 @@ import org.springframework.boot.availability.LivenessState;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component(value = "livenessStateProbeIndicator")
 public class CustomLivenessProbe extends LivenessStateHealthIndicator {
 
     private final ApplicationEventPublisher publisher;

@@ -7,7 +7,7 @@ import org.springframework.boot.availability.ReadinessState;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component(value = "readinessStateProbeIndicator")
 public class CustomReadnessProbe extends ReadinessStateHealthIndicator {
 
     private final ApplicationEventPublisher publisher;
