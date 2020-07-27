@@ -1,41 +1,25 @@
 package io.github.helloworlde.image.controller;
 
-import io.github.helloworlde.image.health.CustomLivenessProbe;
-import io.github.helloworlde.image.health.CustomReadnessProbe;
+import io.github.helloworlde.image.health.CustomHealthIndicator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-import java.util.Map;
-
-@RestController
+@Controller
 public class CustomController {
 
-    private final CustomLivenessProbe livenessProbe;
 
-    private final CustomReadnessProbe readnessProbe;
-
-    public CustomController(CustomLivenessProbe livenessProbe, CustomReadnessProbe readnessProbe) {
-        this.livenessProbe = livenessProbe;
-        this.readnessProbe = readnessProbe;
-    }
+    @Autowired
+    private CustomHealthIndicator customHealthIndicator;
 
     @RequestMapping("/")
-    public Map<String, String> root() {
-        return new HashMap<String, String>() {{
-            put("message", "hello");
-        }};
+    public String root() {
+        return "hello.html";
     }
 
-    @RequestMapping("/liveness")
-    public Boolean switchLiveness(boolean live) {
-        livenessProbe.setLiveness(live);
-        return true;
-    }
-
-    @RequestMapping("/readness")
-    public Boolean switchReadness(boolean read) {
-        readnessProbe.setReadness(read);
-        return true;
+    @GetMapping("/switchHealth")
+    public void switchHealth(boolean health) {
+        customHealthIndicator.setHealth(health);
     }
 }
